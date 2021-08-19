@@ -1,0 +1,172 @@
+
+ Program ej1plantabarbijo;
+
+
+Uses 
+ Crt;
+
+Var 
+ cantDefectMardel:integer;
+
+cantdefecttandil:integer;
+
+cantdefolavarria:integer;
+
+cantprodmardel:integer;
+
+cantprodolavarria:integer;
+
+cantprodtandil:integer;
+
+planta:Integer;
+
+plantaeficientemardel:integer;
+
+plantaeficienteolavarria:integer;
+
+plantaeficientetandil:integer;
+
+preciobarbijo:integer;
+
+respuesta:string;
+
+totalventasmardel:integer;
+
+totalventasolavarria:integer;
+
+totalventastandil:integer;
+
+Begin 
+			// CONSTANTES
+  preciobarbijo := 50;
+        planta := 0;
+
+     // CONTADORES
+  totalventastandil := 0;
+        totalventasmardel := 0;
+        totalventasolavarria := 0;
+
+    // COMIENZO DEL ALGORITMO
+
+Repeat
+              // CONTADORES
+          plantaeficientetandil := 0;
+            plantaeficientemardel := 0;
+            plantaeficienteolavarria := 0;
+         WriteLn('                            BIENVENIDO');
+               WriteLn('---------------------------------------------------------');
+                WriteLn('Para ver total del dia, seleccione la planta que desee (ingresar numero con cero adelante) :');
+               WriteLn('1 - Tandil');
+         WriteLn('2 - Mar del Plata');
+          WriteLn('3 - Olavarria');
+                ReadLn(planta);
+
+                while (planta <1) or (planta >3) do
+                begin
+                      writeLn('Opcion incorrecta, ingrese un numero del 1 al 3 por favor');
+                      ReadLn(planta);
+                end;
+
+
+
+                Case planta Of
+                 1: Begin
+                               WriteLn('PLANTA TANDIL');
+                              WriteLn('--------------------------------------------------------------------------------');
+                           WriteLn('Ingrese la cantidad de productos fabricados durante la ultima semana (Lun a Dom)');
+                           ReadLn(cantprodtandil);
+                                WriteLn('Ingrese cantidad de producto defectuosos');
+                           ReadLn(cantdefecttandil);
+
+                             WriteLn('PLANTA TANDIL');
+                              WriteLn('La cantidad de unidades producidas durante la ultima semana es :',cantprodtandil,' ','unidades');
+                             WriteLn('La cantidad de productos defectuosos es :',cantdefecttandil);
+                         WriteLn('El monto total de ventas es :','$',' ',cantprodtandil*preciobarbijo,' ','(Monto aprox. sujeto a precio del producto)');
+                               totalventastandil := totalventastandil+cantprodtandil;
+
+                                WriteLn('--------------------------------------------------------------');
+                             WriteLn('Desea salir? - si/no');
+                               ReadLn(respuesta);
+                     End;
+                   2: Begin
+                               WriteLn('PLANTA MAR DEL PLATA ');
+                              WriteLn('--------------------------------------------------------------------------------');
+                           WriteLn('Ingrese la cantidad de productos fabricados durante la ultima semana (Lun a Dom)');
+                           ReadLn(cantprodmardel);
+                                WriteLn('Ingrese cantidad de producto defectuosos');
+                           ReadLn(cantdefectmardel);
+
+                             WriteLn('PLANTA MAR DEL PLATA ');
+                              WriteLn('La cantidad de unidades producidas durante la ultima semana es :',cantprodmardel,' ','unidades');
+                             WriteLn('La cantidad de productos defectuosos es :',cantdefectmardel);
+                         WriteLn('El monto total de ventas es :','$',' ',cantprodmardel*preciobarbijo,' ','(Monto aprox. sujeto a precio del producto)');
+                               totalventasmardel := totalventasmardel+cantprodmardel;
+
+                                WriteLn('--------------------------------------------------------------');
+                             WriteLn('Desea salir? - si/no');
+                               ReadLn(respuesta);
+                     End;
+                   3: Begin
+                               WriteLn('PLANTA OLAVARRIA');
+                           WriteLn('--------------------------------------------------------------------------------');
+                           WriteLn('Ingrese la cantidad de productos fabricados durante la ultima semana (Lun a Dom)');
+                           ReadLn(cantprodolavarria);
+                             WriteLn('Ingrese cantidad de producto defectuosos');
+                           ReadLn(cantdefolavarria);
+
+                             WriteLn('PLANTA OLAVARRIA');
+                           WriteLn('La cantidad de unidades producidas durante la ultima semana es :',cantprodolavarria,' ','unidades');
+                          WriteLn('La cantidad de productos defectuosos es :',cantdefolavarria);
+                         WriteLn('El monto total de ventas es :','$',' ',cantprodolavarria*preciobarbijo,' ','(Monto aprox. sujeto a precio del producto)');
+                            totalventasolavarria := totalventasolavarria+cantprodolavarria;
+                                WriteLn('--------------------------------------------------------------');
+
+                            WriteLn('Desea salir? - si/no');
+                               ReadLn(respuesta);
+                     End;
+           End;
+        Until respuesta='si';
+
+    plantaeficientetandil := plantaeficientetandil+cantprodtandil;
+ plantaeficientemardel := plantaeficientemardel+cantprodmardel;
+ plantaeficienteolavarria := plantaeficienteolavarria+cantprodolavarria;
+        If plantaeficientetandil>plantaeficienteolavarria Then Begin
+           WriteLn('LA PLANTA MAS EFICIENTE DE LA SEMANA FUE LA DE TANDIL');
+      End
+    Else Begin
+             If plantaeficientetandil>plantaeficientemardel Then Begin
+                      WriteLn('LA PLANTA MAS EFICIENTE DE LA SEMANA FUE LA DE TANDIL');
+              End
+            Else Begin
+                     If plantaeficientemardel>plantaeficienteolavarria Then Begin
+                           WriteLn('LA PLANTA MAS EFICIENTE DE LA SEMANA FUE LA DE MAR DEL PLATA');
+                       End
+                    Else Begin
+                             If plantaeficientemardel>plantaeficientetandil Then Begin
+                                      WriteLn('LA PLANTA MAS EFICIENTE DE LA SEMANA FUE LA DE MAR DEL PLATA');
+                               End
+                            Else Begin
+                                     If plantaeficienteolavarria>plantaeficientemardel Then Begin
+                                           WriteLn('LA PLANTA MAS EFICIENTE DE LA SEMANA FUE LA DE OLAVARRIA');
+                                   End
+                                    Else Begin
+                                             If plantaeficienteolavarria>plantaeficientetandil Then Begin
+                                                   WriteLn('LA PLANTA MAS EFICIENTE DE LA SEMANA FUE LA DE OLAVARRIA');
+                                           End;
+                                   End;
+                           End;
+                   End;
+           End;
+   End;
+
+  WriteLn('----------------------------------------------------------------------');
+     WriteLn('PLANTA TANDIL - Total de unidades producidas :','',totalventastandil);
+        WriteLn('----------------------------------------------------------------------');
+     WriteLn('PLANTA MAR DEL PLATA  - Total de unidades producidas :','',totalventasmardel);
+        WriteLn('----------------------------------------------------------------------');
+     WriteLn('PLANTA OLAVARRIA - Total de unidades producidas :','',totalventasolavarria);
+  WriteLn('----------------------------------------------------------------------');
+     WriteLn('');
+
+
+End.
